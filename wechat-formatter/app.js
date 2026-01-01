@@ -230,14 +230,10 @@ function applyCurrentStyle() {
     const theme = styleThemes[state.currentStyle];
     const settings = { ...theme.styles, ...state.customSettings };
 
-    // 应用CSS变量
-    const root = document.documentElement;
-    root.style.setProperty('--primary-color', settings.quoteColor);
-    root.style.setProperty('--text-color', settings.titleColor);
-
-    // 应用样式到预览元素
+    // 应用样式到预览元素(不影响网站其他部分)
     elements.wechatPreview.style.fontSize = `${settings.fontSize}px`;
     elements.wechatPreview.style.lineHeight = settings.lineHeight;
+    elements.wechatPreview.style.color = settings.titleColor;
 
     // 应用段落间距
     const paragraphs = elements.wechatPreview.querySelectorAll('p');
@@ -249,6 +245,12 @@ function applyCurrentStyle() {
     const headings = elements.wechatPreview.querySelectorAll('h1, h2, h3');
     headings.forEach(h => {
         h.style.color = settings.titleColor;
+    });
+
+    // 应用H2标题边框颜色
+    const h2Headings = elements.wechatPreview.querySelectorAll('h2');
+    h2Headings.forEach(h2 => {
+        h2.style.borderLeftColor = settings.quoteColor;
     });
 
     // 应用引用样式
