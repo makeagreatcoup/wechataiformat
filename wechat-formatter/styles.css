@@ -361,36 +361,75 @@ body {
     gap: 10px;
 }
 
-/* 微信公众号样式 */
+/* ========== 微信公众号样式 ========== */
+
+/* 标题样式 - 带装饰效果 */
 .wechat-preview h1,
 .wechat-preview h2,
 .wechat-preview h3 {
     margin: 25px 0 15px;
     font-weight: 700;
     line-height: 1.4;
+    position: relative;
 }
 
 .wechat-preview h1 {
-    font-size: 24px;
+    font-size: 26px;
     text-align: center;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 15px;
+    padding: 20px 0;
+    margin: 30px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.wechat-preview h1::before {
+    content: "✨";
+    margin-right: 10px;
 }
 
 .wechat-preview h2 {
-    font-size: 20px;
-    border-left: 4px solid #07c160;
-    padding-left: 12px;
+    font-size: 22px;
+    padding: 12px 15px;
+    margin: 30px 0 20px;
+    background: linear-gradient(to right, #f093fb 0%, #f5576c 100%);
+    color: white !important;
+    border-radius: 6px;
+    border-left: none;
+    box-shadow: 0 3px 10px rgba(245, 87, 108, 0.2);
+}
+
+.wechat-preview h2::before {
+    content: "📌";
+    margin-right: 8px;
 }
 
 .wechat-preview h3 {
-    font-size: 18px;
+    font-size: 19px;
+    padding-left: 20px;
+    position: relative;
+    color: #333 !important;
+}
+
+.wechat-preview h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
 .wechat-preview p {
     margin: 15px 0;
     text-align: justify;
     text-indent: 2em;
+    line-height: 1.8;
 }
 
 .wechat-preview img {
@@ -398,77 +437,189 @@ body {
     height: auto;
     display: block;
     margin: 20px auto;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* 引用块样式 - 多种效果 */
 .wechat-preview blockquote {
-    margin: 20px 0;
-    padding: 15px 20px;
-    background: #f9f9f9;
-    border-left: 4px solid #07c160;
-    color: #555;
+    margin: 25px 0;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    border-radius: 8px;
+    border-left: 5px solid #f39c12;
+    color: #2d3436;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.wechat-preview blockquote::before {
+    content: """;
+    font-size: 60px;
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    color: rgba(0, 0, 0, 0.1);
+    font-family: Georgia, serif;
+}
+
+.wechat-preview blockquote p {
+    text-indent: 0;
+    margin: 0;
+}
+
+/* 列表样式 - 带图标装饰 */
 .wechat-preview ul,
 .wechat-preview ol {
-    margin: 15px 0;
-    padding-left: 30px;
+    margin: 20px 0;
+    padding-left: 0;
 }
 
-.wechat-preview li {
-    margin: 8px 0;
+.wechat-preview ul {
+    list-style: none;
+}
+
+.wechat-preview ul li {
+    margin: 12px 0;
+    padding-left: 30px;
+    position: relative;
     line-height: 1.8;
 }
 
+.wechat-preview ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.wechat-preview ol {
+    padding-left: 30px;
+}
+
+.wechat-preview ol li {
+    margin: 12px 0;
+    line-height: 1.8;
+    padding-left: 8px;
+}
+
+.wechat-preview ol li::marker {
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* 代码样式 - 现代化设计 */
 .wechat-preview code {
-    background: #f5f5f5;
-    padding: 2px 6px;
-    border-radius: 3px;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    padding: 3px 8px;
+    border-radius: 4px;
     font-family: "Monaco", "Menlo", "Consolas", monospace;
     font-size: 0.9em;
+    color: #2d3436;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .wechat-preview pre {
-    background: #f5f5f5;
-    padding: 15px;
-    border-radius: 4px;
+    background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+    padding: 20px;
+    border-radius: 8px;
     overflow-x: auto;
-    margin: 20px 0;
+    margin: 25px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .wechat-preview pre code {
     background: none;
     padding: 0;
+    color: #dfe6e9;
+    box-shadow: none;
+    font-size: 0.95em;
 }
 
+/* 链接样式 - 交互效果 */
 .wechat-preview a {
-    color: #3498db;
+    color: #0984e3;
     text-decoration: none;
-    border-bottom: 1px dashed #3498db;
+    position: relative;
+    padding-bottom: 2px;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
+.wechat-preview a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s;
+}
+
+.wechat-preview a:hover::after {
+    width: 100%;
+}
+
+/* 表格样式 - 现代化 */
 .wechat-preview table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.wechat-preview th,
-.wechat-preview td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
+    margin: 25px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .wechat-preview th {
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    text-align: left;
     font-weight: 600;
 }
 
+.wechat-preview td {
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.wechat-preview tr:last-child td {
+    border-bottom: none;
+}
+
+.wechat-preview tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.wechat-preview tr:hover {
+    background: #e9ecef;
+}
+
+/* 分隔线样式 - 创意设计 */
 .wechat-preview hr {
     border: none;
-    border-top: 1px dashed #ddd;
-    margin: 30px 0;
+    height: 3px;
+    margin: 40px 0;
+    background: linear-gradient(to right, transparent, #667eea, transparent);
+    position: relative;
+}
+
+.wechat-preview hr::before {
+    content: "✦";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 0 15px;
+    color: #667eea;
+    font-size: 20px;
 }
 
 /* 滚动条样式 */

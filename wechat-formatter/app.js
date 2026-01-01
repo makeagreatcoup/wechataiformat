@@ -8,58 +8,86 @@ const state = {
 // 预定义样式主题
 const styleThemes = {
     default: {
-        name: '经典样式',
-        description: '简洁大方,适合各类文章',
+        name: '🎨 梦幻渐变',
+        description: '现代渐变风格,视觉冲击力强',
         styles: {
             titleColor: '#2c3e50',
             fontSize: 16,
             lineHeight: 1.8,
             paragraphSpacing: 20,
-            quoteColor: '#07c160',
-            linkColor: '#3498db',
-            codeBgColor: '#f5f5f5',
+            quoteColor: '#f39c12',
+            linkColor: '#0984e3',
+            codeBgColor: '#2d3436',
             containerWidth: 677
         }
     },
     elegant: {
-        name: '优雅商务',
-        description: '商务专业,适合深度文章',
+        name: '💼 商务专业',
+        description: '沉稳大气,适合商务文章',
         styles: {
-            titleColor: '#1a1a1a',
-            fontSize: 15,
+            titleColor: '#2c3e50',
+            fontSize: 16,
             lineHeight: 2,
             paragraphSpacing: 25,
-            quoteColor: '#5c6bc0',
-            linkColor: '#3f51b5',
-            codeBgColor: '#e8eaf6',
+            quoteColor: '#34495e',
+            linkColor: '#2980b9',
+            codeBgColor: '#ecf0f1',
             containerWidth: 677
         }
     },
     fresh: {
-        name: '清新文艺',
-        description: '文艺清新,适合情感类文章',
+        name: '🌸 清新可爱',
+        description: '柔和粉彩,适合生活情感',
         styles: {
-            titleColor: '#ff6b6b',
+            titleColor: '#e84393',
             fontSize: 16,
             lineHeight: 1.75,
             paragraphSpacing: 22,
-            quoteColor: '#ffd93d',
-            linkColor: '#6bcf7f',
-            codeBgColor: '#fff9c4',
+            quoteColor: '#fd79a8',
+            linkColor: '#e84393',
+            codeBgColor: '#fff0f6',
             containerWidth: 677
         }
     },
     minimal: {
-        name: '极简主义',
-        description: '极简单纯,突出内容本身',
+        name: '⚪ 极简单纯',
+        description: '黑白灰调,突出内容',
         styles: {
-            titleColor: '#000000',
+            titleColor: '#2d3436',
             fontSize: 15,
             lineHeight: 1.6,
             paragraphSpacing: 15,
-            quoteColor: '#999999',
-            linkColor: '#333333',
-            codeBgColor: '#eeeeee',
+            quoteColor: '#636e72',
+            linkColor: '#2d3436',
+            codeBgColor: '#dfe6e9',
+            containerWidth: 677
+        }
+    },
+    tech: {
+        name: '💻 科技蓝调',
+        description: '科技感十足,技术文章首选',
+        styles: {
+            titleColor: '#0984e3',
+            fontSize: 16,
+            lineHeight: 1.8,
+            paragraphSpacing: 20,
+            quoteColor: '#74b9ff',
+            linkColor: '#0984e3',
+            codeBgColor: '#dfe6e9',
+            containerWidth: 677
+        }
+    },
+    warm: {
+        name: '🍁 温暖秋日',
+        description: '暖色系,给人温馨感觉',
+        styles: {
+            titleColor: '#d35400',
+            fontSize: 16,
+            lineHeight: 1.8,
+            paragraphSpacing: 22,
+            quoteColor: '#e67e22',
+            linkColor: '#d35400',
+            codeBgColor: '#ffeaa7',
             containerWidth: 677
         }
     }
