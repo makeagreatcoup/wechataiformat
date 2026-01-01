@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公众号排版工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧编辑区域 -->
+        <div class="editor-panel">
+            <div class="panel-header">
+                <h2>📝 Markdown编辑器</h2>
+                <div class="header-actions">
+                    <button id="clearBtn" class="btn btn-secondary">清空</button>
+                    <button id="pasteBtn" class="btn btn-secondary">粘贴</button>
+                </div>
+            </div>
+            <textarea id="markdownInput" placeholder="在此输入或粘贴Markdown格式的文章内容..."></textarea>
+        </div>
+
+        <!-- 中间操作区域 -->
+        <div class="control-panel">
+            <div class="control-section">
+                <h3>🎨 样式选择</h3>
+                <div class="style-selector" id="styleSelector">
+                    <!-- 样式选项将由JS生成 -->
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>⚙️ 样式设置</h3>
+                <button id="settingsBtn" class="btn btn-primary full-width">自定义样式</button>
+            </div>
+
+            <div class="control-section">
+                <h3>📋 导出</h3>
+                <button id="copyBtn" class="btn btn-success full-width">复制到微信编辑器</button>
+                <div id="copySuccess" class="success-message hidden">✓ 复制成功!</div>
+            </div>
+        </div>
+
+        <!-- 右侧预览区域 -->
+        <div class="preview-panel">
+            <div class="panel-header">
+                <h2>👁️ 实时预览</h2>
+                <div class="device-selector">
+                    <button class="device-btn active" data-device="mobile">手机</button>
+                    <button class="device-btn" data-device="desktop">桌面</button>
+                </div>
+            </div>
+            <div class="preview-content" id="previewContent">
+                <div id="wechatPreview" class="wechat-preview mobile">
+                    <!-- 预览内容将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置弹窗 -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>自定义样式</h2>
+                <button class="close-btn" id="closeSettings">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>标题颜色</label>
+                    <input type="color" id="titleColor" value="#2c3e50">
+                </div>
+                <div class="setting-group">
+                    <label>正文字体大小</label>
+                    <input type="number" id="fontSize" value="16" min="12" max="24">
+                </div>
+                <div class="setting-group">
+                    <label>正文行高</label>
+                    <input type="number" id="lineHeight" value="1.8" min="1" max="3" step="0.1">
+                </div>
+                <div class="setting-group">
+                    <label>段落间距</label>
+                    <input type="number" id="paragraphSpacing" value="20" min="10" max="50">
+                </div>
+                <div class="setting-group">
+                    <label>引用样式颜色</label>
+                    <input type="color" id="quoteColor" value="#f39c12">
+                </div>
+                <div class="setting-group">
+                    <label>链接颜色</label>
+                    <input type="color" id="linkColor" value="#3498db">
+                </div>
+                <div class="setting-group">
+                    <label>代码背景色</label>
+                    <input type="color" id="codeBgColor" value="#f5f5f5">
+                </div>
+                <div class="setting-group">
+                    <label>容器宽度(px)</label>
+                    <input type="number" id="containerWidth" value="677" min="300" max="800">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="resetSettings" class="btn btn-secondary">重置</button>
+                <button id="applySettings" class="btn btn-primary">应用设置</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
