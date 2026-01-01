@@ -595,8 +595,8 @@ function applyCurrentStyle() {
         if (s.h1.border) {
             h1.style.border = s.h1.border;
         }
-        if (s.h1.icon) {
-            h1.setAttribute('data-icon', s.h1.icon);
+        if (s.h1.borderBottom) {
+            h1.style.borderBottom = s.h1.borderBottom;
         }
     });
 
@@ -609,8 +609,8 @@ function applyCurrentStyle() {
         if (s.h2.borderLeft) {
             h2.style.borderLeft = s.h2.borderLeft;
         }
-        if (s.h2.icon) {
-            h2.setAttribute('data-icon', s.h2.icon);
+        if (s.h2.borderBottom) {
+            h2.style.borderBottom = s.h2.borderBottom;
         }
     });
 
@@ -705,19 +705,12 @@ function applyCurrentStyle() {
 // 复制到剪贴板
 async function copyToClipboard() {
     try {
-        // 获取HTML内容
+        // 直接获取带有内联样式的HTML
         const html = elements.wechatPreview.innerHTML;
 
-        // 创建临时容器
-        const container = document.createElement('div');
-        container.innerHTML = html;
-
-        // 处理样式,确保微信公众号兼容性
-        const styledHtml = wrapWechatStyles(container.innerHTML);
-
-        // 使用Clipboard API
+        // 使用Clipboard API复制富文本HTML(包含所有内联样式)
         const clipboardItem = new ClipboardItem({
-            'text/html': new Blob([styledHtml], { type: 'text/html' }),
+            'text/html': new Blob([html], { type: 'text/html' }),
             'text/plain': new Blob([elements.markdownInput.value], { type: 'text/plain' })
         });
 
@@ -731,18 +724,6 @@ async function copyToClipboard() {
         // 降级方案:使用传统的复制方法
         fallbackCopy();
     }
-}
-
-// 包装微信公众号样式
-function wrapWechatStyles(html) {
-    const theme = styleThemes[state.currentStyle];
-    const settings = { ...theme.styles, ...state.customSettings };
-
-    return `
-        <section style="max-width: ${settings.containerWidth}px; margin: 0 auto; padding: 20px; font-size: ${settings.fontSize}px; line-height: ${settings.lineHeight}; color: ${settings.titleColor};">
-            ${html}
-        </section>
-    `;
 }
 
 // 降级复制方案
