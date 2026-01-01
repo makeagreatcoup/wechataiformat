@@ -4,106 +4,109 @@ const state = {
     isMobilePreview: true
 };
 
-// 预定义样式主题 - 每个主题独特的视觉风格
+// 预定义样式主题 - 简洁优雅的设计
 const styleThemes = {
     default: {
-        name: '🎨 梦幻渐变',
-        description: '现代渐变风格,视觉冲击力强',
+        name: '经典简约',
+        description: '简洁大方,适合大多数文章',
         styles: {
             h1: {
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                color: '#ffffff',
-                icon: '✨',
-                shadow: '0 4px 15px rgba(102, 126, 234, 0.3)'
+                background: 'transparent',
+                color: '#1a1a1a',
+                icon: '',
+                shadow: 'none',
+                borderBottom: '2px solid #e8e8e8'
             },
             h2: {
-                background: 'linear-gradient(to right, #f093fb 0%, #f5576c 100%)',
-                color: '#ffffff',
-                icon: '📌',
-                shadow: '0 3px 10px rgba(245, 87, 108, 0.2)'
+                background: 'transparent',
+                color: '#2c3e50',
+                icon: '',
+                shadow: 'none',
+                borderLeft: '4px solid #3498db'
             },
             h3: {
-                dotColor: '#667eea',
-                dotShadow: '0 0 0 3px rgba(102, 126, 234, 0.2)',
-                color: '#2c3e50'
+                dotColor: '#3498db',
+                dotShadow: 'none',
+                color: '#34495e'
             },
             blockquote: {
-                background: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)',
-                borderColor: '#f39c12',
-                color: '#2d3436',
-                shadow: '0 3px 10px rgba(0, 0, 0, 0.1)',
-                showQuote: true
+                background: '#f8f9fa',
+                borderColor: '#3498db',
+                color: '#555',
+                shadow: 'none',
+                showQuote: false
             },
-            listIcon: '▸',
-            listIconColor: '#667eea',
+            listIcon: '•',
+            listIconColor: '#666',
             codeInline: {
-                background: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)',
-                color: '#2d3436',
-                shadow: '0 2px 5px rgba(0, 0, 0, 0.05)'
+                background: '#f4f4f4',
+                color: '#c7254e',
+                shadow: 'none'
             },
             codeBlock: {
-                background: 'linear-gradient(135deg, #2d3436 0%, #000000 100%)',
-                color: '#dfe6e9',
-                shadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+                background: '#282c34',
+                color: '#abb2bf',
+                shadow: '0 2px 8px rgba(0,0,0,0.1)'
             },
             link: {
-                color: '#0984e3',
-                underlineColor: 'linear-gradient(to right, #667eea 0%, #764ba2 100%)'
+                color: '#3498db',
+                underlineColor: '#3498db'
             },
             table: {
-                headerBackground: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                headerColor: '#ffffff',
-                evenRowBg: '#f8f9fa',
-                hoverBg: '#e9ecef',
-                shadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+                headerBackground: '#f8f9fa',
+                headerColor: '#333',
+                evenRowBg: '#fff',
+                hoverBg: '#f1f1f1',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)'
             },
             hr: {
-                background: 'linear-gradient(to right, transparent, #667eea, transparent)',
-                icon: '✦',
-                iconColor: '#667eea'
+                background: '#e8e8e8',
+                icon: '',
+                iconColor: ''
             },
             img: {
-                radius: '8px',
-                shadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                radius: '4px',
+                shadow: '0 2px 8px rgba(0,0,0,0.1)'
             },
             base: {
                 fontSize: 16,
                 lineHeight: 1.8,
-                paragraphSpacing: 20,
+                paragraphSpacing: 16,
                 containerWidth: 677
             }
         }
     },
     elegant: {
-        name: '💼 商务专业',
-        description: '沉稳大气,适合商务文章',
+        name: '优雅商务',
+        description: '专业沉稳,适合商务文章',
         styles: {
             h1: {
                 background: '#2c3e50',
-                color: '#ffffff',
+                color: '#fff',
                 icon: '',
-                shadow: '0 2px 8px rgba(44, 62, 80, 0.3)'
+                shadow: '0 2px 4px rgba(0,0,0,0.1)'
             },
             h2: {
-                background: '#34495e',
-                color: '#ffffff',
-                icon: '▸',
-                shadow: '0 2px 6px rgba(52, 73, 94, 0.2)'
+                background: 'transparent',
+                color: '#2c3e50',
+                icon: '',
+                shadow: 'none',
+                borderBottom: '1px solid #ddd'
             },
             h3: {
                 dotColor: '#2c3e50',
                 dotShadow: 'none',
-                color: '#2c3e50'
+                color: '#34495e'
             },
             blockquote: {
-                background: '#ecf0f1',
-                borderColor: '#34495e',
-                color: '#2c3e50',
-                shadow: 'none',
+                background: '#fff',
+                borderColor: '#95a5a6',
+                color: '#7f8c8d',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)',
                 showQuote: false
             },
-            listIcon: '●',
-            listIconColor: '#2c3e50',
+            listIcon: '▪',
+            listIconColor: '#7f8c8d',
             codeInline: {
                 background: '#ecf0f1',
                 color: '#2c3e50',
@@ -119,11 +122,11 @@ const styleThemes = {
                 underlineColor: '#2980b9'
             },
             table: {
-                headerBackground: '#2c3e50',
-                headerColor: '#ffffff',
-                evenRowBg: '#f8f9fa',
-                hoverBg: '#e9ecef',
-                shadow: 'none'
+                headerBackground: '#34495e',
+                headerColor: '#fff',
+                evenRowBg: '#f9f9f9',
+                hoverBg: '#f0f0f0',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)'
             },
             hr: {
                 background: '#bdc3c7',
@@ -131,287 +134,290 @@ const styleThemes = {
                 iconColor: ''
             },
             img: {
-                radius: '4px',
-                shadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+                radius: '2px',
+                shadow: '0 1px 4px rgba(0,0,0,0.1)'
             },
             base: {
-                fontSize: 16,
-                lineHeight: 2,
-                paragraphSpacing: 25,
+                fontSize: 15,
+                lineHeight: 1.9,
+                paragraphSpacing: 18,
                 containerWidth: 677
             }
         }
     },
     fresh: {
-        name: '🌸 清新可爱',
-        description: '柔和粉彩,适合生活情感',
+        name: '清新文艺',
+        description: '柔和舒适,适合生活文章',
         styles: {
             h1: {
-                background: 'linear-gradient(135deg, #fd79a8 0%, #e84393 100%)',
-                color: '#ffffff',
-                icon: '🌸',
-                shadow: '0 4px 15px rgba(253, 121, 168, 0.3)'
+                background: 'transparent',
+                color: '#16a085',
+                icon: '',
+                shadow: 'none',
+                borderBottom: '3px solid #16a085'
             },
             h2: {
-                background: 'linear-gradient(to right, #fdcb6e 0%, #f39c12 100%)',
-                color: '#ffffff',
-                icon: '💫',
-                shadow: '0 3px 10px rgba(243, 156, 18, 0.2)'
+                background: '#e8f8f5',
+                color: '#16a085',
+                icon: '',
+                shadow: 'none',
+                borderLeft: '5px solid #16a085'
             },
             h3: {
-                dotColor: '#fd79a8',
-                dotShadow: '0 0 0 3px rgba(253, 121, 168, 0.2)',
-                color: '#e84393'
+                dotColor: '#1abc9c',
+                dotShadow: 'none',
+                color: '#16a085'
             },
             blockquote: {
-                background: 'linear-gradient(135deg, #fff0f6 0%, #fd79a8 30%)',
-                borderColor: '#fd79a8',
-                color: '#2d3436',
-                shadow: '0 3px 10px rgba(253, 121, 168, 0.15)',
+                background: '#e8f8f5',
+                borderColor: '#16a085',
+                color: '#555',
+                shadow: 'none',
                 showQuote: false
             },
-            listIcon: '♡',
-            listIconColor: '#fd79a8',
+            listIcon: '◦',
+            listIconColor: '#16a085',
             codeInline: {
-                background: '#fff0f6',
-                color: '#e84393',
+                background: '#d5f4e6',
+                color: '#0e6655',
                 shadow: 'none'
             },
             codeBlock: {
-                background: '#ffeaa7',
-                color: '#2d3436',
+                background: '#2d3e46',
+                color: '#a8cec6',
                 shadow: 'none'
             },
             link: {
-                color: '#e84393',
-                underlineColor: '#fd79a8'
+                color: '#16a085',
+                underlineColor: '#16a085'
             },
             table: {
-                headerBackground: 'linear-gradient(135deg, #fd79a8 0%, #e84393 100%)',
-                headerColor: '#ffffff',
-                evenRowBg: '#fff5f8',
-                hoverBg: '#ffe0eb',
-                shadow: '0 4px 15px rgba(253, 121, 168, 0.15)'
+                headerBackground: '#16a085',
+                headerColor: '#fff',
+                evenRowBg: '#f0fbf8',
+                hoverBg: '#e0f5f0',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)'
             },
             hr: {
-                background: 'linear-gradient(to right, transparent, #fd79a8, transparent)',
-                icon: '♥',
-                iconColor: '#fd79a8'
+                background: '#16a085',
+                icon: '',
+                iconColor: ''
             },
             img: {
-                radius: '12px',
-                shadow: '0 4px 15px rgba(253, 121, 168, 0.2)'
+                radius: '6px',
+                shadow: '0 2px 8px rgba(22, 160, 133, 0.15)'
             },
             base: {
                 fontSize: 16,
-                lineHeight: 1.75,
-                paragraphSpacing: 22,
+                lineHeight: 1.8,
+                paragraphSpacing: 16,
                 containerWidth: 677
             }
         }
     },
     minimal: {
-        name: '⚪ 极简单纯',
-        description: '黑白灰调,突出内容',
+        name: '极简单纯',
+        description: '纯粹极简,突出内容',
         styles: {
             h1: {
-                background: '#ffffff',
-                color: '#2d3436',
+                background: 'transparent',
+                color: '#000',
                 icon: '',
-                shadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                border: '2px solid #2d3436'
+                shadow: 'none'
             },
             h2: {
-                background: '#ffffff',
-                color: '#2d3436',
+                background: 'transparent',
+                color: '#333',
                 icon: '',
-                shadow: 'none',
-                borderLeft: '4px solid #2d3436'
+                shadow: 'none'
             },
             h3: {
-                dotColor: '#2d3436',
+                dotColor: '#666',
                 dotShadow: 'none',
-                color: '#2d3436'
+                color: '#666'
             },
             blockquote: {
-                background: '#ffffff',
-                borderColor: '#636e72',
-                color: '#2d3436',
-                shadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                background: '#fafafa',
+                borderColor: '#ddd',
+                color: '#666',
+                shadow: 'none',
                 showQuote: false
             },
-            listIcon: '—',
-            listIconColor: '#636e72',
+            listIcon: '-',
+            listIconColor: '#999',
             codeInline: {
-                background: '#dfe6e9',
-                color: '#2d3436',
+                background: '#f0f0f0',
+                color: '#d14',
                 shadow: 'none'
             },
             codeBlock: {
-                background: '#2d3436',
-                color: '#dfe6e9',
+                background: '#f6f6f6',
+                color: '#333',
                 shadow: 'none'
             },
             link: {
-                color: '#2d3436',
-                underlineColor: '#636e72'
+                color: '#0066cc',
+                underlineColor: '#0066cc'
             },
             table: {
-                headerBackground: '#2d3436',
-                headerColor: '#ffffff',
-                evenRowBg: '#ffffff',
-                hoverBg: '#f5f6fa',
-                shadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+                headerBackground: '#f6f6f6',
+                headerColor: '#333',
+                evenRowBg: '#fff',
+                hoverBg: '#fafafa',
+                shadow: 'none'
             },
             hr: {
-                background: '#dfe6e9',
+                background: '#ddd',
                 icon: '',
                 iconColor: ''
             },
             img: {
                 radius: '0',
-                shadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+                shadow: 'none'
             },
             base: {
                 fontSize: 15,
-                lineHeight: 1.6,
-                paragraphSpacing: 15,
+                lineHeight: 1.7,
+                paragraphSpacing: 14,
                 containerWidth: 677
             }
         }
     },
     tech: {
-        name: '💻 科技蓝调',
-        description: '科技感十足,技术文章首选',
+        name: '科技风格',
+        description: '技术感强,适合技术文章',
         styles: {
             h1: {
-                background: 'linear-gradient(135deg, #0984e3 0%, #74b9ff 100%)',
-                color: '#ffffff',
-                icon: '</>',
-                shadow: '0 4px 15px rgba(9, 132, 227, 0.3)'
+                background: '#282c34',
+                color: '#61afef',
+                icon: '',
+                shadow: '0 2px 8px rgba(0,0,0,0.15)'
             },
             h2: {
-                background: 'linear-gradient(to right, #00cec9 0%, #0984e3 100%)',
-                color: '#ffffff',
-                icon: '#',
-                shadow: '0 3px 10px rgba(9, 132, 227, 0.2)'
+                background: '#21252b',
+                color: '#61afef',
+                icon: '',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)',
+                borderLeft: '3px solid #61afef'
             },
             h3: {
-                dotColor: '#0984e3',
-                dotShadow: '0 0 0 3px rgba(9, 132, 227, 0.2)',
-                color: '#0984e3'
+                dotColor: '#61afef',
+                dotShadow: 'none',
+                color: '#61afef'
             },
             blockquote: {
-                background: 'linear-gradient(135deg, #dfe6e9 0%, #74b9ff 50%)',
-                borderColor: '#0984e3',
-                color: '#2d3436',
-                shadow: '0 3px 10px rgba(9, 132, 227, 0.15)',
+                background: '#282c34',
+                borderColor: '#61afef',
+                color: '#abb2bf',
+                shadow: '0 2px 8px rgba(0,0,0,0.2)',
                 showQuote: false
             },
-            listIcon: '▪',
-            listIconColor: '#0984e3',
+            listIcon: '▸',
+            listIconColor: '#61afef',
             codeInline: {
-                background: '#dfe6e9',
-                color: '#0984e3',
+                background: '#282c34',
+                color: '#e5c07b',
                 shadow: 'none'
             },
             codeBlock: {
-                background: '#2d3436',
-                color: '#74b9ff',
-                shadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
+                background: '#21252b',
+                color: '#abb2bf',
+                shadow: '0 2px 8px rgba(0,0,0,0.2)'
             },
             link: {
-                color: '#0984e3',
-                underlineColor: '#74b9ff'
+                color: '#61afef',
+                underlineColor: '#61afef'
             },
             table: {
-                headerBackground: 'linear-gradient(135deg, #0984e3 0%, #74b9ff 100%)',
-                headerColor: '#ffffff',
-                evenRowBg: '#f0f8ff',
-                hoverBg: '#e3f2fd',
-                shadow: '0 4px 15px rgba(9, 132, 227, 0.15)'
+                headerBackground: '#282c34',
+                headerColor: '#61afef',
+                evenRowBg: '#2c3138',
+                hoverBg: '#3e4451',
+                shadow: '0 1px 3px rgba(0,0,0,0.15)'
             },
             hr: {
-                background: 'linear-gradient(to right, transparent, #0984e3, transparent)',
-                icon: '[+]',
-                iconColor: '#0984e3'
+                background: '#3e4451',
+                icon: '',
+                iconColor: ''
             },
             img: {
-                radius: '6px',
-                shadow: '0 4px 15px rgba(9, 132, 227, 0.2)'
+                radius: '3px',
+                shadow: '0 2px 8px rgba(0,0,0,0.2)'
             },
             base: {
-                fontSize: 16,
+                fontSize: 15,
                 lineHeight: 1.8,
-                paragraphSpacing: 20,
+                paragraphSpacing: 16,
                 containerWidth: 677
             }
         }
     },
     warm: {
-        name: '🍁 温暖秋日',
-        description: '暖色系,给人温馨感觉',
+        name: '温暖橙调',
+        description: '温暖活力,适合生活文章',
         styles: {
             h1: {
-                background: 'linear-gradient(135deg, #e17055 0%, #d63031 100%)',
-                color: '#ffffff',
-                icon: '🍂',
-                shadow: '0 4px 15px rgba(214, 48, 49, 0.3)'
+                background: '#fff',
+                color: '#d35400',
+                icon: '',
+                shadow: 'none',
+                borderBottom: '3px solid #e67e22'
             },
             h2: {
-                background: 'linear-gradient(to right, #f39c12 0%, #e67e22 100%)',
-                color: '#ffffff',
-                icon: '🍁',
-                shadow: '0 3px 10px rgba(230, 126, 34, 0.2)'
+                background: '#fef5e7',
+                color: '#d35400',
+                icon: '',
+                shadow: 'none',
+                borderLeft: '4px solid #e67e22'
             },
             h3: {
                 dotColor: '#e67e22',
-                dotShadow: '0 0 0 3px rgba(230, 126, 34, 0.2)',
+                dotShadow: 'none',
                 color: '#d35400'
             },
             blockquote: {
-                background: 'linear-gradient(135deg, #ffeaa7 0%, #f39c12 100%)',
+                background: '#fef5e7',
                 borderColor: '#e67e22',
-                color: '#2d3436',
-                shadow: '0 3px 10px rgba(230, 126, 34, 0.15)',
+                color: '#666',
+                shadow: 'none',
                 showQuote: false
             },
-            listIcon: '◦',
+            listIcon: '●',
             listIconColor: '#e67e22',
             codeInline: {
-                background: '#ffeaa7',
+                background: '#fef5e7',
                 color: '#d35400',
                 shadow: 'none'
             },
             codeBlock: {
-                background: '#2d3436',
-                color: '#ffeaa7',
-                shadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+                background: '#2d2d2d',
+                color: '#f39c12',
+                shadow: '0 2px 8px rgba(0,0,0,0.15)'
             },
             link: {
                 color: '#d35400',
                 underlineColor: '#e67e22'
             },
             table: {
-                headerBackground: 'linear-gradient(135deg, #e67e22 0%, #d35400 100%)',
-                headerColor: '#ffffff',
-                evenRowBg: '#fff5e6',
-                hoverBg: '#ffe8cc',
-                shadow: '0 4px 15px rgba(230, 126, 34, 0.15)'
+                headerBackground: '#e67e22',
+                headerColor: '#fff',
+                evenRowBg: '#fef9f3',
+                hoverBg: '#fef5e7',
+                shadow: '0 1px 3px rgba(0,0,0,0.1)'
             },
             hr: {
-                background: 'linear-gradient(to right, transparent, #e67e22, transparent)',
-                icon: '⌘',
-                iconColor: '#e67e22'
+                background: '#e67e22',
+                icon: '',
+                iconColor: ''
             },
             img: {
-                radius: '8px',
-                shadow: '0 4px 15px rgba(230, 126, 34, 0.2)'
+                radius: '4px',
+                shadow: '0 2px 8px rgba(230, 126, 34, 0.2)'
             },
             base: {
                 fontSize: 16,
                 lineHeight: 1.8,
-                paragraphSpacing: 22,
+                paragraphSpacing: 16,
                 containerWidth: 677
             }
         }
@@ -612,8 +618,7 @@ function applyCurrentStyle() {
     const h3s = elements.wechatPreview.querySelectorAll('h3');
     h3s.forEach(h3 => {
         h3.style.color = s.h3.color;
-        h3.setAttribute('data-dot-color', s.h3.dotColor);
-        h3.setAttribute('data-dot-shadow', s.h3.dotShadow);
+        h3.style.setProperty('--h3-dot-color', s.h3.dotColor);
     });
 
     // 引用块
@@ -681,8 +686,6 @@ function applyCurrentStyle() {
     const hrs = elements.wechatPreview.querySelectorAll('hr');
     hrs.forEach(hr => {
         hr.style.background = s.hr.background;
-        hr.setAttribute('data-icon', s.hr.icon);
-        hr.setAttribute('data-icon-color', s.hr.iconColor);
     });
 
     // 图片
