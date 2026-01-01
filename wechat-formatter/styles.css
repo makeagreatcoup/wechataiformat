@@ -363,7 +363,7 @@ body {
 
 /* ========== 微信公众号样式 ========== */
 
-/* 标题样式 - 带装饰效果 */
+/* 标题样式 - 基础样式,具体样式由JS动态设置 */
 .wechat-preview h1,
 .wechat-preview h2,
 .wechat-preview h3 {
@@ -378,38 +378,30 @@ body {
     text-align: center;
     padding: 20px 0;
     margin: 30px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white !important;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .wechat-preview h1::before {
-    content: "✨";
-    margin-right: 10px;
+    content: attr(data-icon) " ";
+    font-size: 24px;
 }
 
 .wechat-preview h2 {
     font-size: 22px;
     padding: 12px 15px;
     margin: 30px 0 20px;
-    background: linear-gradient(to right, #f093fb 0%, #f5576c 100%);
-    color: white !important;
     border-radius: 6px;
-    border-left: none;
-    box-shadow: 0 3px 10px rgba(245, 87, 108, 0.2);
 }
 
 .wechat-preview h2::before {
-    content: "📌";
-    margin-right: 8px;
+    content: attr(data-icon) " ";
+    font-size: 20px;
 }
 
 .wechat-preview h3 {
     font-size: 19px;
     padding-left: 20px;
     position: relative;
-    color: #333 !important;
 }
 
 .wechat-preview h3::before {
@@ -420,9 +412,9 @@ body {
     transform: translateY(-50%);
     width: 6px;
     height: 6px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: attr(data-dot-color, color);
     border-radius: 50%;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    box-shadow: attr(data-dot-shadow);
 }
 
 .wechat-preview p {
@@ -437,30 +429,15 @@ body {
     height: auto;
     display: block;
     margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* 引用块样式 - 多种效果 */
+/* 引用块样式 - 基础样式 */
 .wechat-preview blockquote {
     margin: 25px 0;
     padding: 20px 25px;
-    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
     border-radius: 8px;
-    border-left: 5px solid #f39c12;
-    color: #2d3436;
+    border-left: 5px solid;
     position: relative;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.wechat-preview blockquote::before {
-    content: """;
-    font-size: 60px;
-    position: absolute;
-    top: -10px;
-    left: 15px;
-    color: rgba(0, 0, 0, 0.1);
-    font-family: Georgia, serif;
 }
 
 .wechat-preview blockquote p {
@@ -487,10 +464,9 @@ body {
 }
 
 .wechat-preview ul li::before {
-    content: "▸";
+    content: attr(data-icon) " ";
     position: absolute;
     left: 0;
-    color: #667eea;
     font-weight: bold;
     font-size: 18px;
 }
@@ -505,43 +481,29 @@ body {
     padding-left: 8px;
 }
 
-.wechat-preview ol li::marker {
-    color: #667eea;
-    font-weight: bold;
-}
-
-/* 代码样式 - 现代化设计 */
+/* 代码样式 - 基础样式 */
 .wechat-preview code {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
     padding: 3px 8px;
     border-radius: 4px;
     font-family: "Monaco", "Menlo", "Consolas", monospace;
     font-size: 0.9em;
-    color: #2d3436;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .wechat-preview pre {
-    background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
     padding: 20px;
     border-radius: 8px;
     overflow-x: auto;
     margin: 25px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .wechat-preview pre code {
     background: none;
     padding: 0;
-    color: #dfe6e9;
-    box-shadow: none;
     font-size: 0.95em;
 }
 
-/* 链接样式 - 交互效果 */
+/* 链接样式 - 基础样式 */
 .wechat-preview a {
-    color: #0984e3;
     text-decoration: none;
     position: relative;
     padding-bottom: 2px;
@@ -556,7 +518,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    background: var(--underline-color);
     transition: width 0.3s;
 }
 
@@ -564,26 +526,20 @@ body {
     width: 100%;
 }
 
-/* 表格样式 - 现代化 */
+/* 表格样式 - 基础样式 */
 .wechat-preview table {
     width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 .wechat-preview th {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
     padding: 15px;
     text-align: left;
     font-weight: 600;
 }
 
 .wechat-preview td {
-    border: none;
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -593,32 +549,23 @@ body {
     border-bottom: none;
 }
 
-.wechat-preview tr:nth-child(even) {
-    background: #f8f9fa;
-}
-
-.wechat-preview tr:hover {
-    background: #e9ecef;
-}
-
-/* 分隔线样式 - 创意设计 */
+/* 分隔线样式 - 基础样式 */
 .wechat-preview hr {
     border: none;
     height: 3px;
     margin: 40px 0;
-    background: linear-gradient(to right, transparent, #667eea, transparent);
     position: relative;
 }
 
 .wechat-preview hr::before {
-    content: "✦";
+    content: attr(data-icon);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
     padding: 0 15px;
-    color: #667eea;
+    color: attr(data-icon-color);
     font-size: 20px;
 }
 

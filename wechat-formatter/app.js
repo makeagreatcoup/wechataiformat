@@ -1,94 +1,419 @@
 // 应用状态管理
 const state = {
     currentStyle: 'default',
-    customSettings: {},
     isMobilePreview: true
 };
 
-// 预定义样式主题
+// 预定义样式主题 - 每个主题独特的视觉风格
 const styleThemes = {
     default: {
         name: '🎨 梦幻渐变',
         description: '现代渐变风格,视觉冲击力强',
         styles: {
-            titleColor: '#2c3e50',
-            fontSize: 16,
-            lineHeight: 1.8,
-            paragraphSpacing: 20,
-            quoteColor: '#f39c12',
-            linkColor: '#0984e3',
-            codeBgColor: '#2d3436',
-            containerWidth: 677
+            h1: {
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: '#ffffff',
+                icon: '✨',
+                shadow: '0 4px 15px rgba(102, 126, 234, 0.3)'
+            },
+            h2: {
+                background: 'linear-gradient(to right, #f093fb 0%, #f5576c 100%)',
+                color: '#ffffff',
+                icon: '📌',
+                shadow: '0 3px 10px rgba(245, 87, 108, 0.2)'
+            },
+            h3: {
+                dotColor: '#667eea',
+                dotShadow: '0 0 0 3px rgba(102, 126, 234, 0.2)',
+                color: '#2c3e50'
+            },
+            blockquote: {
+                background: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)',
+                borderColor: '#f39c12',
+                color: '#2d3436',
+                shadow: '0 3px 10px rgba(0, 0, 0, 0.1)',
+                showQuote: true
+            },
+            listIcon: '▸',
+            listIconColor: '#667eea',
+            codeInline: {
+                background: 'linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%)',
+                color: '#2d3436',
+                shadow: '0 2px 5px rgba(0, 0, 0, 0.05)'
+            },
+            codeBlock: {
+                background: 'linear-gradient(135deg, #2d3436 0%, #000000 100%)',
+                color: '#dfe6e9',
+                shadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+            },
+            link: {
+                color: '#0984e3',
+                underlineColor: 'linear-gradient(to right, #667eea 0%, #764ba2 100%)'
+            },
+            table: {
+                headerBackground: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                headerColor: '#ffffff',
+                evenRowBg: '#f8f9fa',
+                hoverBg: '#e9ecef',
+                shadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+            },
+            hr: {
+                background: 'linear-gradient(to right, transparent, #667eea, transparent)',
+                icon: '✦',
+                iconColor: '#667eea'
+            },
+            img: {
+                radius: '8px',
+                shadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+            },
+            base: {
+                fontSize: 16,
+                lineHeight: 1.8,
+                paragraphSpacing: 20,
+                containerWidth: 677
+            }
         }
     },
     elegant: {
         name: '💼 商务专业',
         description: '沉稳大气,适合商务文章',
         styles: {
-            titleColor: '#2c3e50',
-            fontSize: 16,
-            lineHeight: 2,
-            paragraphSpacing: 25,
-            quoteColor: '#34495e',
-            linkColor: '#2980b9',
-            codeBgColor: '#ecf0f1',
-            containerWidth: 677
+            h1: {
+                background: '#2c3e50',
+                color: '#ffffff',
+                icon: '',
+                shadow: '0 2px 8px rgba(44, 62, 80, 0.3)'
+            },
+            h2: {
+                background: '#34495e',
+                color: '#ffffff',
+                icon: '▸',
+                shadow: '0 2px 6px rgba(52, 73, 94, 0.2)'
+            },
+            h3: {
+                dotColor: '#2c3e50',
+                dotShadow: 'none',
+                color: '#2c3e50'
+            },
+            blockquote: {
+                background: '#ecf0f1',
+                borderColor: '#34495e',
+                color: '#2c3e50',
+                shadow: 'none',
+                showQuote: false
+            },
+            listIcon: '●',
+            listIconColor: '#2c3e50',
+            codeInline: {
+                background: '#ecf0f1',
+                color: '#2c3e50',
+                shadow: 'none'
+            },
+            codeBlock: {
+                background: '#2c3e50',
+                color: '#ecf0f1',
+                shadow: 'none'
+            },
+            link: {
+                color: '#2980b9',
+                underlineColor: '#2980b9'
+            },
+            table: {
+                headerBackground: '#2c3e50',
+                headerColor: '#ffffff',
+                evenRowBg: '#f8f9fa',
+                hoverBg: '#e9ecef',
+                shadow: 'none'
+            },
+            hr: {
+                background: '#bdc3c7',
+                icon: '',
+                iconColor: ''
+            },
+            img: {
+                radius: '4px',
+                shadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+            },
+            base: {
+                fontSize: 16,
+                lineHeight: 2,
+                paragraphSpacing: 25,
+                containerWidth: 677
+            }
         }
     },
     fresh: {
         name: '🌸 清新可爱',
         description: '柔和粉彩,适合生活情感',
         styles: {
-            titleColor: '#e84393',
-            fontSize: 16,
-            lineHeight: 1.75,
-            paragraphSpacing: 22,
-            quoteColor: '#fd79a8',
-            linkColor: '#e84393',
-            codeBgColor: '#fff0f6',
-            containerWidth: 677
+            h1: {
+                background: 'linear-gradient(135deg, #fd79a8 0%, #e84393 100%)',
+                color: '#ffffff',
+                icon: '🌸',
+                shadow: '0 4px 15px rgba(253, 121, 168, 0.3)'
+            },
+            h2: {
+                background: 'linear-gradient(to right, #fdcb6e 0%, #f39c12 100%)',
+                color: '#ffffff',
+                icon: '💫',
+                shadow: '0 3px 10px rgba(243, 156, 18, 0.2)'
+            },
+            h3: {
+                dotColor: '#fd79a8',
+                dotShadow: '0 0 0 3px rgba(253, 121, 168, 0.2)',
+                color: '#e84393'
+            },
+            blockquote: {
+                background: 'linear-gradient(135deg, #fff0f6 0%, #fd79a8 30%)',
+                borderColor: '#fd79a8',
+                color: '#2d3436',
+                shadow: '0 3px 10px rgba(253, 121, 168, 0.15)',
+                showQuote: false
+            },
+            listIcon: '♡',
+            listIconColor: '#fd79a8',
+            codeInline: {
+                background: '#fff0f6',
+                color: '#e84393',
+                shadow: 'none'
+            },
+            codeBlock: {
+                background: '#ffeaa7',
+                color: '#2d3436',
+                shadow: 'none'
+            },
+            link: {
+                color: '#e84393',
+                underlineColor: '#fd79a8'
+            },
+            table: {
+                headerBackground: 'linear-gradient(135deg, #fd79a8 0%, #e84393 100%)',
+                headerColor: '#ffffff',
+                evenRowBg: '#fff5f8',
+                hoverBg: '#ffe0eb',
+                shadow: '0 4px 15px rgba(253, 121, 168, 0.15)'
+            },
+            hr: {
+                background: 'linear-gradient(to right, transparent, #fd79a8, transparent)',
+                icon: '♥',
+                iconColor: '#fd79a8'
+            },
+            img: {
+                radius: '12px',
+                shadow: '0 4px 15px rgba(253, 121, 168, 0.2)'
+            },
+            base: {
+                fontSize: 16,
+                lineHeight: 1.75,
+                paragraphSpacing: 22,
+                containerWidth: 677
+            }
         }
     },
     minimal: {
         name: '⚪ 极简单纯',
         description: '黑白灰调,突出内容',
         styles: {
-            titleColor: '#2d3436',
-            fontSize: 15,
-            lineHeight: 1.6,
-            paragraphSpacing: 15,
-            quoteColor: '#636e72',
-            linkColor: '#2d3436',
-            codeBgColor: '#dfe6e9',
-            containerWidth: 677
+            h1: {
+                background: '#ffffff',
+                color: '#2d3436',
+                icon: '',
+                shadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+                border: '2px solid #2d3436'
+            },
+            h2: {
+                background: '#ffffff',
+                color: '#2d3436',
+                icon: '',
+                shadow: 'none',
+                borderLeft: '4px solid #2d3436'
+            },
+            h3: {
+                dotColor: '#2d3436',
+                dotShadow: 'none',
+                color: '#2d3436'
+            },
+            blockquote: {
+                background: '#ffffff',
+                borderColor: '#636e72',
+                color: '#2d3436',
+                shadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                showQuote: false
+            },
+            listIcon: '—',
+            listIconColor: '#636e72',
+            codeInline: {
+                background: '#dfe6e9',
+                color: '#2d3436',
+                shadow: 'none'
+            },
+            codeBlock: {
+                background: '#2d3436',
+                color: '#dfe6e9',
+                shadow: 'none'
+            },
+            link: {
+                color: '#2d3436',
+                underlineColor: '#636e72'
+            },
+            table: {
+                headerBackground: '#2d3436',
+                headerColor: '#ffffff',
+                evenRowBg: '#ffffff',
+                hoverBg: '#f5f6fa',
+                shadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
+            },
+            hr: {
+                background: '#dfe6e9',
+                icon: '',
+                iconColor: ''
+            },
+            img: {
+                radius: '0',
+                shadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+            },
+            base: {
+                fontSize: 15,
+                lineHeight: 1.6,
+                paragraphSpacing: 15,
+                containerWidth: 677
+            }
         }
     },
     tech: {
         name: '💻 科技蓝调',
         description: '科技感十足,技术文章首选',
         styles: {
-            titleColor: '#0984e3',
-            fontSize: 16,
-            lineHeight: 1.8,
-            paragraphSpacing: 20,
-            quoteColor: '#74b9ff',
-            linkColor: '#0984e3',
-            codeBgColor: '#dfe6e9',
-            containerWidth: 677
+            h1: {
+                background: 'linear-gradient(135deg, #0984e3 0%, #74b9ff 100%)',
+                color: '#ffffff',
+                icon: '</>',
+                shadow: '0 4px 15px rgba(9, 132, 227, 0.3)'
+            },
+            h2: {
+                background: 'linear-gradient(to right, #00cec9 0%, #0984e3 100%)',
+                color: '#ffffff',
+                icon: '#',
+                shadow: '0 3px 10px rgba(9, 132, 227, 0.2)'
+            },
+            h3: {
+                dotColor: '#0984e3',
+                dotShadow: '0 0 0 3px rgba(9, 132, 227, 0.2)',
+                color: '#0984e3'
+            },
+            blockquote: {
+                background: 'linear-gradient(135deg, #dfe6e9 0%, #74b9ff 50%)',
+                borderColor: '#0984e3',
+                color: '#2d3436',
+                shadow: '0 3px 10px rgba(9, 132, 227, 0.15)',
+                showQuote: false
+            },
+            listIcon: '▪',
+            listIconColor: '#0984e3',
+            codeInline: {
+                background: '#dfe6e9',
+                color: '#0984e3',
+                shadow: 'none'
+            },
+            codeBlock: {
+                background: '#2d3436',
+                color: '#74b9ff',
+                shadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
+            },
+            link: {
+                color: '#0984e3',
+                underlineColor: '#74b9ff'
+            },
+            table: {
+                headerBackground: 'linear-gradient(135deg, #0984e3 0%, #74b9ff 100%)',
+                headerColor: '#ffffff',
+                evenRowBg: '#f0f8ff',
+                hoverBg: '#e3f2fd',
+                shadow: '0 4px 15px rgba(9, 132, 227, 0.15)'
+            },
+            hr: {
+                background: 'linear-gradient(to right, transparent, #0984e3, transparent)',
+                icon: '[+]',
+                iconColor: '#0984e3'
+            },
+            img: {
+                radius: '6px',
+                shadow: '0 4px 15px rgba(9, 132, 227, 0.2)'
+            },
+            base: {
+                fontSize: 16,
+                lineHeight: 1.8,
+                paragraphSpacing: 20,
+                containerWidth: 677
+            }
         }
     },
     warm: {
         name: '🍁 温暖秋日',
         description: '暖色系,给人温馨感觉',
         styles: {
-            titleColor: '#d35400',
-            fontSize: 16,
-            lineHeight: 1.8,
-            paragraphSpacing: 22,
-            quoteColor: '#e67e22',
-            linkColor: '#d35400',
-            codeBgColor: '#ffeaa7',
-            containerWidth: 677
+            h1: {
+                background: 'linear-gradient(135deg, #e17055 0%, #d63031 100%)',
+                color: '#ffffff',
+                icon: '🍂',
+                shadow: '0 4px 15px rgba(214, 48, 49, 0.3)'
+            },
+            h2: {
+                background: 'linear-gradient(to right, #f39c12 0%, #e67e22 100%)',
+                color: '#ffffff',
+                icon: '🍁',
+                shadow: '0 3px 10px rgba(230, 126, 34, 0.2)'
+            },
+            h3: {
+                dotColor: '#e67e22',
+                dotShadow: '0 0 0 3px rgba(230, 126, 34, 0.2)',
+                color: '#d35400'
+            },
+            blockquote: {
+                background: 'linear-gradient(135deg, #ffeaa7 0%, #f39c12 100%)',
+                borderColor: '#e67e22',
+                color: '#2d3436',
+                shadow: '0 3px 10px rgba(230, 126, 34, 0.15)',
+                showQuote: false
+            },
+            listIcon: '◦',
+            listIconColor: '#e67e22',
+            codeInline: {
+                background: '#ffeaa7',
+                color: '#d35400',
+                shadow: 'none'
+            },
+            codeBlock: {
+                background: '#2d3436',
+                color: '#ffeaa7',
+                shadow: '0 4px 15px rgba(0, 0, 0, 0.2)'
+            },
+            link: {
+                color: '#d35400',
+                underlineColor: '#e67e22'
+            },
+            table: {
+                headerBackground: 'linear-gradient(135deg, #e67e22 0%, #d35400 100%)',
+                headerColor: '#ffffff',
+                evenRowBg: '#fff5e6',
+                hoverBg: '#ffe8cc',
+                shadow: '0 4px 15px rgba(230, 126, 34, 0.15)'
+            },
+            hr: {
+                background: 'linear-gradient(to right, transparent, #e67e22, transparent)',
+                icon: '⌘',
+                iconColor: '#e67e22'
+            },
+            img: {
+                radius: '8px',
+                shadow: '0 4px 15px rgba(230, 126, 34, 0.2)'
+            },
+            base: {
+                fontSize: 16,
+                lineHeight: 1.8,
+                paragraphSpacing: 22,
+                containerWidth: 677
+            }
         }
     }
 };
@@ -174,7 +499,7 @@ function selectStyle(styleKey) {
     });
 
     // 应用样式并更新预览
-    updatePreview();
+    applyCurrentStyle();
 }
 
 // 绑定事件监听
@@ -203,17 +528,9 @@ function bindEvents() {
         }
     });
 
-    // 设置弹窗
-    elements.settingsBtn.addEventListener('click', openSettings);
-    elements.closeSettings.addEventListener('click', closeSettings);
-    elements.applySettings.addEventListener('click', applyCustomSettings);
-    elements.resetSettings.addEventListener('click', resetSettings);
-
-    // 点击弹窗外部关闭
-    elements.settingsModal.addEventListener('click', (e) => {
-        if (e.target === elements.settingsModal) {
-            closeSettings();
-        }
+    // 设置弹窗 - 暂时禁用自定义功能
+    elements.settingsBtn.addEventListener('click', () => {
+        alert('当前版本不支持自定义样式,请选择不同的主题!');
     });
 
     // 设备切换
@@ -256,59 +573,130 @@ function updatePreview() {
 // 应用当前样式
 function applyCurrentStyle() {
     const theme = styleThemes[state.currentStyle];
-    const settings = { ...theme.styles, ...state.customSettings };
+    const s = theme.styles;
 
-    // 应用样式到预览元素(不影响网站其他部分)
-    elements.wechatPreview.style.fontSize = `${settings.fontSize}px`;
-    elements.wechatPreview.style.lineHeight = settings.lineHeight;
-    elements.wechatPreview.style.color = settings.titleColor;
+    // 基础样式
+    elements.wechatPreview.style.fontSize = `${s.base.fontSize}px`;
+    elements.wechatPreview.style.lineHeight = s.base.lineHeight;
+    elements.wechatPreview.style.maxWidth = `${s.base.containerWidth}px`;
 
-    // 应用段落间距
-    const paragraphs = elements.wechatPreview.querySelectorAll('p');
-    paragraphs.forEach(p => {
-        p.style.marginBottom = `${settings.paragraphSpacing}px`;
-    });
-
-    // 应用标题颜色
-    const headings = elements.wechatPreview.querySelectorAll('h1, h2, h3');
-    headings.forEach(h => {
-        h.style.color = settings.titleColor;
-    });
-
-    // 应用H2标题边框颜色
-    const h2Headings = elements.wechatPreview.querySelectorAll('h2');
-    h2Headings.forEach(h2 => {
-        h2.style.borderLeftColor = settings.quoteColor;
-    });
-
-    // 应用引用样式
-    const blockquotes = elements.wechatPreview.querySelectorAll('blockquote');
-    blockquotes.forEach(bq => {
-        bq.style.borderLeftColor = settings.quoteColor;
-    });
-
-    // 应用链接颜色
-    const links = elements.wechatPreview.querySelectorAll('a');
-    links.forEach(link => {
-        link.style.color = settings.linkColor;
-        link.style.borderBottomColor = settings.linkColor;
-    });
-
-    // 应用代码背景色
-    const codeBlocks = elements.wechatPreview.querySelectorAll('pre');
-    codeBlocks.forEach(code => {
-        code.style.backgroundColor = settings.codeBgColor;
-    });
-
-    const inlineCodes = elements.wechatPreview.querySelectorAll('code');
-    inlineCodes.forEach(code => {
-        if (!code.parentElement.tagName.toLowerCase() === 'pre') {
-            code.style.backgroundColor = settings.codeBgColor;
+    // H1标题
+    const h1s = elements.wechatPreview.querySelectorAll('h1');
+    h1s.forEach(h1 => {
+        h1.style.background = s.h1.background;
+        h1.style.color = s.h1.color;
+        h1.style.boxShadow = s.h1.shadow;
+        if (s.h1.border) {
+            h1.style.border = s.h1.border;
+        }
+        if (s.h1.icon) {
+            h1.setAttribute('data-icon', s.h1.icon);
         }
     });
 
-    // 应用容器宽度
-    elements.wechatPreview.style.maxWidth = `${settings.containerWidth}px`;
+    // H2标题
+    const h2s = elements.wechatPreview.querySelectorAll('h2');
+    h2s.forEach(h2 => {
+        h2.style.background = s.h2.background;
+        h2.style.color = s.h2.color;
+        h2.style.boxShadow = s.h2.shadow;
+        if (s.h2.borderLeft) {
+            h2.style.borderLeft = s.h2.borderLeft;
+        }
+        if (s.h2.icon) {
+            h2.setAttribute('data-icon', s.h2.icon);
+        }
+    });
+
+    // H3标题
+    const h3s = elements.wechatPreview.querySelectorAll('h3');
+    h3s.forEach(h3 => {
+        h3.style.color = s.h3.color;
+        h3.setAttribute('data-dot-color', s.h3.dotColor);
+        h3.setAttribute('data-dot-shadow', s.h3.dotShadow);
+    });
+
+    // 引用块
+    const blockquotes = elements.wechatPreview.querySelectorAll('blockquote');
+    blockquotes.forEach(bq => {
+        bq.style.background = s.blockquote.background;
+        bq.style.borderLeftColor = s.blockquote.borderColor;
+        bq.style.color = s.blockquote.color;
+        bq.style.boxShadow = s.blockquote.shadow;
+        bq.setAttribute('data-show-quote', s.blockquote.showQuote);
+    });
+
+    // 列表图标
+    const ulLis = elements.wechatPreview.querySelectorAll('ul li');
+    ulLis.forEach(li => {
+        li.setAttribute('data-icon', s.listIcon);
+        li.style.color = s.listIconColor;
+    });
+
+    // 行内代码
+    const inlineCodes = elements.wechatPreview.querySelectorAll('code:not(pre code)');
+    inlineCodes.forEach(code => {
+        code.style.background = s.codeInline.background;
+        code.style.color = s.codeInline.color;
+        code.style.boxShadow = s.codeInline.shadow;
+    });
+
+    // 代码块
+    const pres = elements.wechatPreview.querySelectorAll('pre');
+    pres.forEach(pre => {
+        pre.style.background = s.codeBlock.background;
+        pre.style.boxShadow = s.codeBlock.shadow;
+    });
+    const preCodes = elements.wechatPreview.querySelectorAll('pre code');
+    preCodes.forEach(code => {
+        code.style.color = s.codeBlock.color;
+    });
+
+    // 链接
+    const links = elements.wechatPreview.querySelectorAll('a');
+    links.forEach(link => {
+        link.style.color = s.link.color;
+        link.style.setProperty('--underline-color', s.link.underlineColor);
+    });
+
+    // 表格
+    const tables = elements.wechatPreview.querySelectorAll('table');
+    tables.forEach(table => {
+        table.style.boxShadow = s.table.shadow;
+    });
+    const ths = elements.wechatPreview.querySelectorAll('th');
+    ths.forEach(th => {
+        th.style.background = s.table.headerBackground;
+        th.style.color = s.table.headerColor;
+    });
+    const trs = elements.wechatPreview.querySelectorAll('tr');
+    trs.forEach((tr, index) => {
+        if (index % 2 === 1) {
+            tr.style.background = s.table.evenRowBg;
+        }
+    });
+    // 表格悬停效果通过CSS实现
+
+    // 分隔线
+    const hrs = elements.wechatPreview.querySelectorAll('hr');
+    hrs.forEach(hr => {
+        hr.style.background = s.hr.background;
+        hr.setAttribute('data-icon', s.hr.icon);
+        hr.setAttribute('data-icon-color', s.hr.iconColor);
+    });
+
+    // 图片
+    const imgs = elements.wechatPreview.querySelectorAll('img');
+    imgs.forEach(img => {
+        img.style.borderRadius = s.img.radius;
+        img.style.boxShadow = s.img.shadow;
+    });
+
+    // 段落间距
+    const paragraphs = elements.wechatPreview.querySelectorAll('p');
+    paragraphs.forEach(p => {
+        p.style.marginBottom = `${s.base.paragraphSpacing}px`;
+    });
 }
 
 // 复制到剪贴板
@@ -378,53 +766,6 @@ function showCopySuccess() {
     setTimeout(() => {
         elements.copySuccess.classList.add('hidden');
     }, 2000);
-}
-
-// 打开设置弹窗
-function openSettings() {
-    const theme = styleThemes[state.currentStyle];
-    const settings = { ...theme.styles, ...state.customSettings };
-
-    // 填充当前设置值
-    document.getElementById('titleColor').value = settings.titleColor;
-    document.getElementById('fontSize').value = settings.fontSize;
-    document.getElementById('lineHeight').value = settings.lineHeight;
-    document.getElementById('paragraphSpacing').value = settings.paragraphSpacing;
-    document.getElementById('quoteColor').value = settings.quoteColor;
-    document.getElementById('linkColor').value = settings.linkColor;
-    document.getElementById('codeBgColor').value = settings.codeBgColor;
-    document.getElementById('containerWidth').value = settings.containerWidth;
-
-    elements.settingsModal.classList.add('show');
-}
-
-// 关闭设置弹窗
-function closeSettings() {
-    elements.settingsModal.classList.remove('show');
-}
-
-// 应用自定义设置
-function applyCustomSettings() {
-    state.customSettings = {
-        titleColor: document.getElementById('titleColor').value,
-        fontSize: parseInt(document.getElementById('fontSize').value),
-        lineHeight: parseFloat(document.getElementById('lineHeight').value),
-        paragraphSpacing: parseInt(document.getElementById('paragraphSpacing').value),
-        quoteColor: document.getElementById('quoteColor').value,
-        linkColor: document.getElementById('linkColor').value,
-        codeBgColor: document.getElementById('codeBgColor').value,
-        containerWidth: parseInt(document.getElementById('containerWidth').value)
-    };
-
-    applyCurrentStyle();
-    closeSettings();
-}
-
-// 重置设置
-function resetSettings() {
-    state.customSettings = {};
-    applyCurrentStyle();
-    closeSettings();
 }
 
 // 设置默认示例内容
